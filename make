@@ -1,0 +1,13 @@
+g++ treasure.cpp -c
+g++ creature.cpp -c
+g++ weapon.cpp -c
+g++ treasurecreationfactory.cpp -c
+g++ creaturecreationfactory.cpp -c
+g++ weaponcreationfactory.cpp -c
+g++ treasureinit.cpp -c
+g++ creatureinit.cpp -c
+g++ weaponinit.cpp -c
+g++ classmakerfactory.cpp -c
+g++ lifeformcontrol.cpp -c
+g++ main.cpp -c
+g++ windows.cpp -c
