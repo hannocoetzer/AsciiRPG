@@ -19,3 +19,8 @@ g++ -g -pthread -c *.cpp
 g++ -g -pthread -no-pie *.o -lncurses -o Game
 
 ```
+Run
+```
+chmod + x Game
+./Game
+```
