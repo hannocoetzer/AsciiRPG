@@ -45,7 +45,6 @@ F7	Help screen
 
 🔣 Map Symbols
 Symbol	Meaning
-#	Wall (not passable)
 .	Walkable ground
 T	Tree or obstacle
 +	Closed door (can open)
