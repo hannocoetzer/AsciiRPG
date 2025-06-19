@@ -9,7 +9,8 @@ This is a terminal-based ASCII game written in C++ using `ncurses` for rendering
 Install the following packages on Debian/Ubuntu:
 
 ```bash
-sudo apt-get install g++ build-essential libncurses5-dev libncursesw5-dev gdb valgrind cppcheck ccache cmake libgtest-dev libpthread-stubs0-dev
+sudo apt-get install g++
+sudo apt-get install build-essential libncurses5-dev libncursesw5-dev gdb valgrind cmake libpthread-stubs0-dev
 
 ```
 
