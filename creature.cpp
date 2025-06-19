@@ -227,6 +227,10 @@ void creature::pathverify() {
     pos_x = pre_x;
     pos_y = pre_y;
   }
+  if (mapchar[pos_y][pos_x] == '~') {
+    pos_x = pre_x;
+    pos_y = pre_y;
+  }
 }
 
 /*                                treasureverify is temorary and will change a
@@ -935,6 +939,7 @@ void creature::charcoloron(int y, int x) {
   init_pair(6, COLOR_RED, COLOR_BLACK);
   init_pair(7, COLOR_MAGENTA, COLOR_BLACK);
   init_pair(8, COLOR_GREEN, COLOR_BLACK);
+  init_pair(10, COLOR_BLUE, COLOR_BLACK);
 
   if (mapchar[y][x] == '.') {
     wattron(map_win, COLOR_PAIR(3));
@@ -960,6 +965,10 @@ void creature::charcoloron(int y, int x) {
   if (mapchar[y][x] == '$') {
 
     wattron(map_win, COLOR_PAIR(5));
+  }
+  if (mapchar[y][x] == '~') {
+
+    wattron(map_win, COLOR_PAIR(10));
   }
 }
 
@@ -973,6 +982,7 @@ void creature::charcoloroff(int y, int x) {
   init_pair(6, COLOR_RED, COLOR_BLACK);
   init_pair(7, COLOR_MAGENTA, COLOR_BLACK);
   init_pair(8, COLOR_GREEN, COLOR_BLACK);
+  init_pair(10, COLOR_BLUE, COLOR_BLACK);
 
   if (mapchar[y][x] == '.') {
     wattron(map_win, COLOR_PAIR(3));
@@ -998,5 +1008,9 @@ void creature::charcoloroff(int y, int x) {
   if (mapchar[y][x] == '$') {
 
     wattron(map_win, COLOR_PAIR(5));
+  }
+  if (mapchar[y][x] == '~') {
+
+    wattron(map_win, COLOR_PAIR(10));
   }
 }
