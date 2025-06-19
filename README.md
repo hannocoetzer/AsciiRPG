@@ -1,6 +1,6 @@
 🎮 Game Overview
 
-This is a terminal-based ASCII adventure game written in modern C++ using the ncurses library. You control a hero and explore procedurally constructed maps filled with enemies, weapons, and treasures — all rendered with ASCII characters.
+This is a terminal-based C++ ASCII adventure game. You are Stag, the Hero, exploring a world that gets manually/ procedurally constructed filled with enemies, weapons, and treasures.
 
 ![Game Screenshot](images/game_screen.jpg)
 
