@@ -4,7 +4,6 @@ This is a terminal-based ASCII adventure game written in modern C++ using the nc
 
 ![Game Screenshot](images/game_screen.jpg)
 
-Inspired by roguelikes and classic terminal games, it combines exploration, combat, and strategy with minimal graphics but rich interaction.
 🕹️ Gameplay Summary
 
     Move your hero using arrow keys or number pad (supports diagonal movement).
@@ -34,7 +33,6 @@ Inspired by roguelikes and classic terminal games, it combines exploration, comb
     ASCII graphics: Every object (walls, players, enemies) is a character with a color.
 
 ⌨️ Controls
-Key	Action
 Arrow keys / NumPad (2/4/6/8)	Move in cardinal directions
 NumPad (1/3/7/9)	Move diagonally
 F1	Quit the game
@@ -44,7 +42,7 @@ F4	View kill list
 F5	Show hero stats
 F6	Read mission briefing
 F7	Help screen
-Y / N	Confirm in pop-up prompts
+
 🔣 Map Symbols
 Symbol	Meaning
 #	Wall (not passable)
@@ -55,8 +53,9 @@ T	Tree or obstacle
 $	Treasure
 (	Weapon
 0	Teleport square
-@	Hero (you)
+X	Hero (you)
 Letters (A, B, C...)	Enemies
+
 🧱 Technical Highlights
 
     Written in modern C++ (C++17) with object-oriented architecture
@@ -84,8 +83,7 @@ The game progresses by loading the next map in sequence (map2, map3, ...), each 
 This is a terminal-based ASCII game written in C++ using `ncurses` for rendering and standard C++ threads for timing and control.
 
 
-
-## 📦 Dependencies
+📦 Dependencies
 
 Install the following packages on Debian/Ubuntu:
 
