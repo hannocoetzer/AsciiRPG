@@ -79,8 +79,6 @@ The player must survive each level by:
 
 The game progresses by loading the next map in sequence (map2, map3, ...), each with increasing difficulty and new challenges.
 
-This is a terminal-based ASCII game written in C++ using `ncurses` for rendering and standard C++ threads for timing and control.
-
 
 📦 Dependencies
 
