@@ -30,6 +30,6 @@ g++ -g -pthread -no-pie *.o -lncurses -o Game
 ```
 Run
 ```
-chmod + x Game
+sudo chmod + x Game
 ./Game
 ```
