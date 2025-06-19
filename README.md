@@ -1,6 +1,6 @@
 🎮 Game Overview
 
-This is a terminal-based ASCII adventure game written in modern C++ using the ncurses library. You control a hero and explore a procedurally constructed maps filled with enemies, weapons, and treasures — all rendered with ASCII characters.
+This is a terminal-based ASCII adventure game written in modern C++ using the ncurses library. You control a hero and explore procedurally constructed maps filled with enemies, weapons, and treasures — all rendered with ASCII characters.
 
 ![Game Screenshot](images/game_screen.jpg)
 
