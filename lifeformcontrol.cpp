@@ -1,4 +1,6 @@
 #include "lifeformcontrol.h"
+#include "winvar.h"
+#include <ncurses.h>
 
 using namespace std;
 
@@ -63,23 +65,10 @@ void lifeformcontrol::collision_check() {
       if (creatures[0]->getpos_x() == creatures[x]->getpos_x()) {
         if (creatures[0]->getpos_y() == creatures[x]->getpos_y()) {
 
-          int num = rand() % creatures[x]->getagility() +
-                    1; // Get random between 1 and MAX_RANGE
-          if (num <= 10) {
-            creature_collision_no = x;
-            attack();
-            creature_detail();
-            hero_detail();
-          } else {
-            char str[100];
-
-            strcpy(str, "You **MISSED** the <");
-            strcat(str, creatures[x]->getname());
-            strcat(str, ">. \n");
-
-            waddstr(action_win, str);
-            wrefresh(action_win);
-          }
+          creature_collision_no = x;
+          attack();
+          creature_detail();
+          hero_detail();
         }
       }
     }
@@ -90,13 +79,76 @@ void lifeformcontrol::collision_check() {
 void lifeformcontrol::attack() {
 
   if (checkhealth()) {
-    creatures[0]->sethitpoints(
-        creatures[0]->gethitpoints() -
-        creatures[creature_collision_no]->getweapondamage());
+
+    bool successfullParry = parry();
+
+    // set creature damage from hero
     creatures[creature_collision_no]->sethitpoints(
         creatures[creature_collision_no]->gethitpoints() -
         creatures[0]->getweapondamage());
+
+    if (!successfullParry) {
+
+      // set hero damage from creature
+      creatures[0]->sethitpoints(
+          creatures[0]->gethitpoints() -
+          creatures[creature_collision_no]->getweapondamage());
+    }
   }
+}
+
+bool lifeformcontrol::parry() {
+  int x;
+  int ch;
+  nodelay(stdscr, TRUE);
+  bool successfullParry = false;
+  common_win = newwin(32, 38, 8, 94);
+  wborder(common_win, '|', '|', '-', '-', '+', '+', '+', '+');
+  wmove(common_win, 0, 7);
+  waddstr(common_win, "Parry window");
+  wrefresh(common_win);
+
+  wmove(common_win, 3, 2);
+  waddstr(common_win, "Defend");
+  wmove(common_win, 4, 2);
+  waddstr(common_win, "------");
+  wmove(common_win, 6, 2);
+  waddstr(common_win, "------");
+
+  // Defend
+  wmove(common_win, 20, 2);
+  for (int n = 28; n > 4; n--) {
+    char x_str[7] = "######";
+
+    // skip first sweetspot zone line
+    if (n != 6) {
+      wmove(common_win, n, 2);
+      waddstr(common_win, x_str);
+    }
+    wrefresh(common_win);
+    int ch = getch();
+
+    // space block attempt
+    if (ch == 32) {
+      wmove(common_win, n, 10);
+      waddstr(common_win, " ** Poof");
+      // sweetspot block/parry
+      if (n > 4 && n < 10) {
+        successfullParry = true;
+        wmove(common_win, 5, 10);
+        waddstr(common_win, "BANG!! Blocked!!");
+        wrefresh(common_win);
+        nodelay(stdscr, FALSE);
+        getch();
+
+        return successfullParry;
+      }
+    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+  }
+  nodelay(stdscr, FALSE);
+
+  return false;
 }
 
 bool lifeformcontrol::checkhealth() {
